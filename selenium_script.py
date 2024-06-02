@@ -29,16 +29,12 @@ def get_trending_topics():
     driver.get("https://twitter.com/login")
     time.sleep(2)
     
-    username = driver.find_element(By.XPATH,"//input[@name='text']")
-    username.send_keys("Mindthief14")
-    next_button = driver.find_element(By.XPATH,"//span[contains(text(),'Next')]")
-    next_button.click()
-
-    time.sleep(2)
-    password = driver.find_element(By.XPATH,"//input[@name='password']")
-    password.send_keys('Shiguj@14')
-    log_in = driver.find_element(By.XPATH,"//span[contains(text(),'Log in')]")
-    log_in.click()
+    username_field = driver.find_element(By.NAME, "session[username_or_email]")
+    password_field = driver.find_element(By.NAME, "session[password]")
+    
+    username_field.send_keys(username)
+    password_field.send_keys(password)
+    password_field.send_keys(Keys.RETURN)
     
     time.sleep(5)  # Wait for the login process to complete
 
